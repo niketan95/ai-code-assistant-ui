@@ -3,9 +3,9 @@ import requests
 
 API_URL = "https://ai-code-assistant-yieh.onrender.com"
 
-st.set_page_config(page_title="AI Code Assistant", layout="wide")
+st.set_page_config(page_title="AI Codebase Assistant", layout="wide")
 
-st.title("💻 AI Code Assistant")
+st.title("💻 AI Codebase Assistant")
 st.markdown("Analyze any codebase using AI. Upload a repository and ask questions.")
 
 st.markdown("### 🚀 Features")
@@ -48,3 +48,26 @@ if st.button("Ask AI"):
                 st.error(f"Error: {e}")
     else:
         st.warning("Enter a question")
+
+# Summarize Repository
+st.markdown("""
+Click below to generate a high-level summary of the entire codebase including:
+- Purpose
+- Architecture
+- Key modules
+""")
+
+if st.button("Summarize Repo"):
+    with st.spinner("Analyzing entire codebase..."):
+        try:
+            res = requests.post(f"{API_URL}/summarize")
+
+            if res.status_code == 200:
+                response = res.json()
+                st.success("Summary:")
+                st.write(response.get("summary", response))
+            else:
+                st.error(f"Failed with status code: {res.status_code}")
+
+        except Exception as e:
+            st.error(f"Error: {e}")
