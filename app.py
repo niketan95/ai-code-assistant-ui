@@ -43,7 +43,7 @@ if st.button("Ask AI"):
                 )
                 st.success("Answer:")
                 response = res.json()
-		st.write(response.get("answer", response))
+                st.write(response.get("answer", response))
             except Exception as e:
                 st.error(f"Error: {e}")
     else:
