@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "https://ai-code-assistant-yieh.onrender.com"
+API_URL = "https://ai-code-assistant-yieh.onrender.com/api/v1"
 
 st.set_page_config(page_title="AI Codebase Assistant", layout="wide")
 
